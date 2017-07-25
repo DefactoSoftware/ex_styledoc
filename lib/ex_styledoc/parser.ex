@@ -15,7 +15,12 @@ defmodule ExStyledoc.Parser do
 
   defp parse_example(_, string) do
     string = String.trim(string)
-    example = eval_example(string) |> safe_to_string()
+    example = eval_example(string)
+
+    example = case example do
+      {:safe, _data} -> safe_to_string(example)
+      _ -> example
+    end
 
     ~s"""
     <div class="example">#{example}</div>
