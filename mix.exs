@@ -17,7 +17,9 @@ defmodule ExStyledoc.Mixfile do
   end
 
   defp deps do
-    []
+    [
+      {:earmark, "~> 1.1"}
+    ]
   end
 
   defp package do
